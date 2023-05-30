@@ -1,0 +1,85 @@
+<div class="centered-content">
+  <div class="task-manager-container">
+    <div class="sidebar has-background-white">
+      <div style="display:flex; justify-content: space-between">
+        <h1 class="title has-text-primary">
+          Lists
+        </h1>
+        <div class="dropdown-content">
+
+          <button mat-mini-fab color="primary" [routerLink]="['/edit-list', selectedListId]">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-mini-fab color="warn" (click)="onDeleteListClick()">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="list-menu">
+        <a
+          class="list-menu-item"
+          *ngFor="let list of lists"
+          [routerLink]="['/lists', list._id]"
+          routerLinkActive="is-active"
+        >
+          <p>{{ list.title }}</p>
+        </a>
+      </div>
+
+      <button mat-raised-button color="primary" routerLink="/new-list">
+        + New List
+      </button>
+    </div>
+
+    <div class="task-list-container has-background-light">
+      <div *ngIf="tasks">
+        <div class="top-bar">
+          <h1 class="title has-text-primary">
+            Tasks
+          </h1>
+          <div class="dropdown is-hoverable is-right">
+
+            <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Task Elements -->
+        <div
+          class="task"
+          *ngFor="let task of tasks"
+          (click)="onTaskClick(task)"
+          [ngClass]="{ completed: task.completed }"
+        >
+          <div class="task-text">
+            <p>{{ task.title }}</p>
+          </div>
+          <div class="task-buttons">
+
+            <button mat-mini-fab color="primary" [routerLink]="['/lists', selectedListId, 'edit-task', task._id]">
+              <mat-icon>edit</mat-icon>
+            </button>
+
+            <button mat-mini-fab color="secondary" (click)="onDeleteTaskClick(task._id)"  style="margin-left: 10px;">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <h3 class="empty-state-text" *ngIf="tasks.length === 0">
+          Tasks list is empty! Let's add your first task.
+        </h3>
+
+        <button mat-fab color="primary" class="circle-add-button" routerLink="./new-task">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+
+      <div *ngIf="!tasks">
+        <h3 class="empty-state-text">Please select a list from the sidebar</h3>
+      </div>
+    </div>
+  </div>
+</div>

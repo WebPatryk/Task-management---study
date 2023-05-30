@@ -1,0 +1,21 @@
+<div class="centered-content">
+  <div class="modal-box">
+    <h1 class="title">
+      Create a new task
+    </h1>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Task name</mat-label>
+      <input matInput placeholder="Enter a task name..." width="" value="" type="text"  #taskTitleInput/>
+    </mat-form-field>
+    <br><br>
+    <div class="buttons centered-content">
+      <button mat-button color="primary"routerLink="/" >Cancel</button>
+      <button mat-raised-button color="primary" (click)="createTask(taskTitleInput.value)">Create</button>
+    </div>
+
+
+
+
+  </div>
+</div>

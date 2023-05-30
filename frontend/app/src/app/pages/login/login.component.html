@@ -1,0 +1,45 @@
+<div class="centered-content">
+  <div class="white-box">
+    <h1 class="title has-text-primary centered-content">Login to app</h1>
+
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          placeholder="m.kowalski@gmail.com"
+          value=""
+          #emailInput
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          placeholder="password"
+          value=""
+          type="password"
+          #pwInput
+        />
+      </mat-form-field>
+    </form>
+
+    <div class="field " style="display: flex; justify-content: center;">
+      <p class="control">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="onLoginButtonClicked(emailInput.value, pwInput.value)"
+        >
+          Login
+        </button>
+      </p>
+    </div>
+    <br />
+
+    <p class="has-text-grey">
+      Not got an account? <a routerLink="/signup">Sign up</a> now!
+    </p>
+  </div>
+</div>
